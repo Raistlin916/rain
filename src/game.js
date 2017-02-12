@@ -28,7 +28,7 @@ export default class Game {
 
 
     this.catGroup = this.add.group()
-    this.cat = this.catGroup.create(150, this.world.height - 50, 'cat')
+    this.cat = this.catGroup.create(150, this.world.height - 55, 'cat')
     this.cat.width = 164
     this.cat.height = 171.5
     this.physics.arcade.enable(this.cat)
