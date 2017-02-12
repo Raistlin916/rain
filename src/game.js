@@ -11,6 +11,7 @@ export default class Game {
   }
 
   create() {
+    this.stage.disableVisibilityChange = true;
     this.world.bounds.setTo(-50, -50, this.world.width + 100, this.world.height + 50)
 
     this.hearts = this.add.physicsGroup()
