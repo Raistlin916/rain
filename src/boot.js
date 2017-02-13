@@ -7,7 +7,6 @@ import {
 export default class Boot {
   init() {
     this.input.maxPointers = 1;
-    this.stage.disableVisibilityChange = false;
 
     if (this.game.device.desktop) {
       this.scale.scaleMode = Phaser.ScaleManager.USER_SCALE;

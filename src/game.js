@@ -12,12 +12,9 @@ export default class Game {
 
   create() {
     this.stage.disableVisibilityChange = true;
-    this.world.bounds.setTo(-50, -50, this.world.width + 100, this.world.height + 50)
 
     this.hearts = this.add.physicsGroup()
-    this.hearts.createMultiple(500, 'heart', 0)
-    this.hearts.setAll('outOfBoundsKill', true)
-    this.hearts.setAll('checkWorldBounds', true)
+    this.hearts.createMultiple(100, 'heart', 0)
 
     const r = () => {
       for (let i = 0; i < this.rnd.integerInRange(4, 8); i++) {
@@ -29,11 +26,11 @@ export default class Game {
 
 
     this.catGroup = this.add.group()
-    this.cat = this.catGroup.create(150, this.world.height - 45, 'cat')
+    this.cat = this.catGroup.create(150, this.world.height + 5, 'cat')
     this.cat.width = 164
     this.cat.height = 171.5
     this.physics.arcade.enable(this.cat)
-    this.cat.body.setCircle(40, 70, 150)
+    this.cat.body.setCircle(50, 70, 150)
     this.cat.anchor.setTo(0.5, 1)
   }
 
@@ -77,6 +74,11 @@ export default class Game {
     if (this.cat.body.x >= this.world.width - 100) {
       this.cat.body.x = this.world.width - 100
     }
-    console.log(this.cat.body.x)
+
+    this.hearts.forEach(item => {
+      if (item.body.y > this.world.height) {
+        item.kill()
+      }
+    })
   }
 }
